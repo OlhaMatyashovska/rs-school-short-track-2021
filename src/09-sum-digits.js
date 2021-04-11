@@ -11,8 +11,19 @@
  *
  */
 function getSumOfDigits(n) {
-  let newNumber = String(n).split('').reduce((initial, number) => initial += Number(number), 0);
-  return (newNumber >= 10) ? newNumber = String(newNumber).split('').reduce((initial, number) => initial += Number(number), 0) : newNumber;
+  let newNumber = String(n).split('').reduce((initial, number) => {
+    let reInitial = initial;
+    reInitial += Number(number);
+    return reInitial;
+  }, 0);
+  if (newNumber >= 10) {
+    newNumber = String(newNumber).split('').reduce((initial, number) => {
+      let reInitial = initial;
+      reInitial += Number(number);
+      return reInitial;
+    }, 0);
+  }
+  return newNumber;
 }
 
 module.exports = getSumOfDigits;
